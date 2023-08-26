@@ -3,9 +3,14 @@ const Task = ({ task }) => {
     <div>
       <span>{task.description}. </span>
       <span>
-        <em>{task.urgent ? "Urgent: Yes " : "Urgent: No "}</em>
+        <em>{task.urgent ? "(Urgent) " : ""}</em>
       </span>
-      <button>{task.urgent ? "Make Non-Urgent" : "Make Urgent"}</button>
+      <span
+        style={{ textDecoration: "underline", cursor: "pointer" }}
+        onClick={() => console.log(task.id)}
+      >
+        {task.urgent ? "Make Non-Urgent" : "Make Urgent"}
+      </span>
     </div>
   );
 };

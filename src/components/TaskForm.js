@@ -1,4 +1,4 @@
-const TaskForm = ({ addTask }) => {
+const TaskForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Task Submitted");
