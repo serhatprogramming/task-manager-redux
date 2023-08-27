@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import taskService from "../services/taskService";
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -22,3 +23,11 @@ const tasksSlice = createSlice({
 
 export const { addTask, toggleUrgency, initializeTasks } = tasksSlice.actions;
 export default tasksSlice.reducer;
+
+// Async action creators
+export const fetchInitTasks = () => {
+  return async (dispatch) => {
+    const tasks = await taskService.getTasks();
+    dispatch(initializeTasks(tasks));
+  };
+};
