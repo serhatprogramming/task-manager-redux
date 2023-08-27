@@ -4,12 +4,23 @@ import FilterTasks from "./FilterTasks";
 
 const TaskList = () => {
   const tasks = useSelector((state) => state.tasks);
+  const filter = useSelector((state) => state.filter);
+
+  const filteredTasks =
+    filter === "all"
+      ? tasks
+      : tasks.filter(
+          (task) =>
+            (filter === "urgent" && task.urgent) ||
+            (filter === "non-urgent" && !task.urgent)
+        );
+
   return (
     <div>
       <h2>Task List</h2>
       <FilterTasks />
       <hr />
-      {tasks.map((task) => (
+      {filteredTasks.map((task) => (
         <Task key={task.id} task={task} />
       ))}
       <hr />
