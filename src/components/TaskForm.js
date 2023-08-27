@@ -1,17 +1,12 @@
 import { useDispatch } from "react-redux";
-import { addTask } from "../reducers/tasksReducer";
-import taskService from "../services/taskService";
+import { createTask } from "../reducers/tasksReducer";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const taskDescription = event.target.taskDescription.value;
-    const newTask = await taskService.createTask({
-      description: taskDescription,
-      urgent: false,
-    });
-    dispatch(addTask(newTask));
+    dispatch(createTask(taskDescription));
     event.target.taskDescription.value = "";
   };
 

@@ -31,3 +31,18 @@ export const fetchInitTasks = () => {
     dispatch(initializeTasks(tasks));
   };
 };
+
+export const createTask = (description) => {
+  return async (dispatch) => {
+    const task = { description, urgent: false };
+    const newTask = await taskService.createTask(task);
+    dispatch(addTask(newTask));
+  };
+};
+
+export const toggleTaskUrgency = (task) => {
+  return async (dispatch) => {
+    await taskService.updateTask(task.id, { ...task, urgent: !task.urgent });
+    dispatch(toggleUrgency(task.id));
+  };
+};

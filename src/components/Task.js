@@ -1,13 +1,11 @@
 import { useDispatch } from "react-redux";
-import { toggleUrgency } from "../reducers/tasksReducer";
-import taskService from "../services/taskService";
+import { toggleTaskUrgency } from "../reducers/tasksReducer";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
 
   const handleToggleUrgency = async () => {
-    await taskService.updateTask(task.id, { ...task, urgent: !task.urgent });
-    dispatch(toggleUrgency(task.id));
+    dispatch(toggleTaskUrgency(task));
   };
 
   return (
