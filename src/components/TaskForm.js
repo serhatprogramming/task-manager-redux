@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTask } from "../actions/tasksActions";
+import { addTask } from "../reducers/tasksReducer";
 
 const TaskForm = () => {
   const dispatch = useDispatch();

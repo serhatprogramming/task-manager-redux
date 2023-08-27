@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { toggleUrgency } from "../actions/tasksActions";
+import { toggleUrgency } from "../reducers/tasksReducer";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
